@@ -1,0 +1,53 @@
+﻿@page
+@model WebApplication1.Pages.aboutModel
+
+
+<div id="container" >
+    <div>
+        <h1 id="title" style="color:green;font-family:'Book Antiqua';font-size:50px; text-align:center;font-weight:bold">Książka kucharska</h1> <br /><br />
+    </div>
+
+    <div>
+        <form method="post">
+            @foreach (var item in Model.Dania)
+            {
+            <div class="row" style=" background-color: #f0fcdb ">
+
+                <div class="col-md-4">
+                    <img src="@Url.Content(item.Zdj)" width="100%" style="margin: 5%;margin-top:23%; border-radius: 10px; border: 2px solid black "/>
+
+                </div>
+
+                <div class="col-md-8">
+                    <h2 style="margin:2%">
+                        Przepis nr
+                        @Html.DisplayFor(m => item.id).
+
+                        @Html.DisplayFor(m => item.Nazwa)
+                    </h2>
+                    <p style="font-family:Verdana;text-align:justify;padding:3%;padding-bottom:0;margin-top:2%">
+                        @Html.DisplayFor(m => item.Przepis) 
+                    </p>
+                    <div style="margin-left:4%">
+                        <button asp-page-handler="Delete" asp-route-id=@item.id class="btn btn-outline-danger"
+                                onclick="return confirm('Czy jesteś pewien że chcesz usunąć ?')">
+                            Usuń
+                        </button>
+                        <a asp-route-id="@item.id" asp-page="Edit" class="btn btn-outline-success">Edytuj</a>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            }
+
+
+        </form>
+        <a asp-page="Create" class="btn btn-info " style="display: inline-block; margin: 2%;; margin-left: 40%">Dodaj przepis</a>
+    </div>
+
+
+    </div>

@@ -1,0 +1,51 @@
+﻿@page
+@model WebApplication1.Pages.Shared.CreateModel
+@{
+}
+<div ><h2 style="font:bold;margin:5%;margin-bottom:0%; margin-left:16%;">Tutaj możesz dodać nowy przepis</h2></div><br />
+
+<form method="post">
+    <div>
+        <div class="form-group row">
+            <div class="col-2" style="text-align:right;">
+                <label asp-for="Dania.Nazwa">Nazwa dania:</label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Dania.Nazwa" class="form-control" />
+            </div>
+            <span asp-validation-for="Dania.Nazwa" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2" style="text-align:right;">
+                <label asp-for="Dania.Przepis">Treść przepisu:</label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Dania.Przepis" class="form-control" />
+            </div>
+            <span asp-validation-for="Dania.Przepis" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2" style="text-align:right;">
+                <label asp-for="Dania.Zdj">Ścieżka url do zdjęcia:</label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Dania.Zdj" class="form-control" />
+            </div>
+            <span asp-validation-for="Dania.Zdj" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-5 offset-2">
+                <div class="row">
+                    <div class="col-6">
+                        <input type="submit" class="btn btn-info form-control" value="Dodaj" />
+                    </div>
+                    <div class="col-6">
+                        <a asp-page="strona" class="btn btn-success form-control">Powrót</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+@section scripts{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}}
